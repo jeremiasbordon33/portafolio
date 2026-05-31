@@ -9,20 +9,25 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #0a0e17;
-    --bg2: #0f1520;
-    --bg3: #141c2e;
-    --card: #111827;
-    --border: rgba(99,132,200,0.15);
-    --border2: rgba(99,132,200,0.28);
-    --accent: #4e8ef7;
-    --accent2: #7eb8f7;
-    --text: #e8edf8;
-    --muted: #7a8aab;
-    --tag-bg: rgba(78,142,247,0.12);
-    --tag-color: #7eb8f7;
-    --green: #3ecf8e;
-    --amber: #f4a340;
+    --bg: #f7f8fc;
+    --bg2: #eef0f7;
+    --card: #ffffff;
+    --border: rgba(60,90,160,0.12);
+    --border2: rgba(60,90,160,0.25);
+    --accent: #2563eb;
+    --accent2: #1d4ed8;
+    --text: #1a2035;
+    --muted: #5a6a8a;
+    --tag-bg: rgba(37,99,235,0.08);
+    --tag-color: #1d4ed8;
+    --green: #16a34a;
+    --green-bg: rgba(22,163,74,0.09);
+    --amber: #b45309;
+    --amber-bg: rgba(180,83,9,0.09);
+    --purple: #7c3aed;
+    --purple-bg: rgba(124,58,237,0.09);
+    --pink: #be185d;
+    --pink-bg: rgba(190,24,93,0.08);
   }
 
   html { scroll-behavior: smooth; }
@@ -37,30 +42,30 @@
     overflow-x: hidden;
   }
 
-  /* grid overlay */
+  /* subtle grid */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
     background-image:
-      linear-gradient(rgba(78,142,247,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(78,142,247,0.04) 1px, transparent 1px);
+      linear-gradient(rgba(37,99,235,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(37,99,235,0.04) 1px, transparent 1px);
     background-size: 48px 48px;
     pointer-events: none;
     z-index: 0;
   }
 
-  /* glow orbs */
+  /* soft orbs */
   .orb {
     position: fixed;
     border-radius: 50%;
-    filter: blur(120px);
+    filter: blur(100px);
     pointer-events: none;
     z-index: 0;
-    opacity: 0.3;
+    opacity: 0.18;
   }
-  .orb-1 { width: 500px; height: 500px; background: #1a3a8f; top: -150px; right: -100px; }
-  .orb-2 { width: 400px; height: 400px; background: #0d2a5e; bottom: 10%; left: -120px; }
+  .orb-1 { width: 500px; height: 500px; background: #93c5fd; top: -150px; right: -100px; }
+  .orb-2 { width: 380px; height: 380px; background: #a5b4fc; bottom: 10%; left: -120px; }
 
   .container {
     max-width: 860px;
@@ -71,10 +76,7 @@
   }
 
   /* HEADER */
-  header {
-    padding: 5rem 0 3rem;
-    position: relative;
-  }
+  header { padding: 5rem 0 3rem; }
 
   .header-badge {
     display: inline-block;
@@ -83,7 +85,7 @@
     letter-spacing: 0.12em;
     color: var(--accent);
     background: var(--tag-bg);
-    border: 1px solid rgba(78,142,247,0.2);
+    border: 1px solid rgba(37,99,235,0.18);
     padding: 4px 14px;
     border-radius: 100px;
     margin-bottom: 1.5rem;
@@ -96,13 +98,13 @@
     font-weight: 400;
     line-height: 1.1;
     letter-spacing: -0.01em;
-    color: #f0f4ff;
+    color: #0f172a;
     margin-bottom: 0.6rem;
   }
 
   h1 em {
     font-style: italic;
-    color: var(--accent2);
+    color: var(--accent);
   }
 
   .header-sub {
@@ -131,14 +133,10 @@
     transition: color 0.2s;
   }
 
-  .header-links a:hover { color: var(--accent2); }
-
+  .header-links a:hover { color: var(--accent); }
   .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); display: inline-block; }
 
-  /* SECTION */
-  section {
-    padding: 2rem 0 4rem;
-  }
+  section { padding: 2rem 0 4rem; }
 
   .section-label {
     font-family: 'DM Mono', monospace;
@@ -163,7 +161,7 @@
   .projects-grid {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.4rem;
   }
 
   .card {
@@ -171,52 +169,33 @@
     border: 1px solid var(--border);
     border-radius: 16px;
     padding: 1.8rem 2rem;
-    transition: border-color 0.25s, transform 0.2s;
+    transition: border-color 0.25s, box-shadow 0.25s, transform 0.2s;
     position: relative;
     overflow: hidden;
   }
 
-  .card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(78,142,247,0.4), transparent);
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
   .card:hover {
     border-color: var(--border2);
+    box-shadow: 0 4px 24px rgba(37,99,235,0.07);
     transform: translateY(-2px);
   }
-
-  .card:hover::before { opacity: 1; }
 
   .card-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.85rem;
   }
 
   .card-number {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
-    color: rgba(78,142,247,0.5);
+    color: #94a3b8;
     letter-spacing: 0.08em;
     white-space: nowrap;
     padding-top: 3px;
-  }
-
-  .card-meta {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
+    margin-bottom: 4px;
   }
 
   .accuracy-badge {
@@ -225,38 +204,35 @@
     font-weight: 500;
     padding: 3px 10px;
     border-radius: 100px;
-    background: rgba(62,207,142,0.1);
+    background: var(--green-bg);
     color: var(--green);
-    border: 1px solid rgba(62,207,142,0.2);
+    border: 1px solid rgba(22,163,74,0.2);
     white-space: nowrap;
   }
 
   .card-title {
     font-family: 'DM Serif Display', serif;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     font-weight: 400;
-    color: #e8edf8;
+    color: #0f172a;
     line-height: 1.3;
     margin-bottom: 0.7rem;
     flex: 1;
   }
 
   .card-desc {
-    font-size: 0.92rem;
-    color: var(--muted);
-    line-height: 1.7;
-    margin-bottom: 1.2rem;
+    font-size: 0.9rem;
+    color: #475569;
+    line-height: 1.75;
+    margin-bottom: 1.1rem;
   }
 
-  .card-desc strong {
-    color: #c5d3ee;
-    font-weight: 500;
-  }
+  .card-desc strong { color: #1e293b; font-weight: 500; }
 
   .tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 7px;
   }
 
   .tag {
@@ -266,26 +242,37 @@
     border-radius: 6px;
     background: var(--tag-bg);
     color: var(--tag-color);
-    border: 1px solid rgba(78,142,247,0.15);
-    letter-spacing: 0.02em;
+    border: 1px solid rgba(37,99,235,0.13);
   }
 
   .tag.amber {
-    background: rgba(244,163,64,0.1);
+    background: var(--amber-bg);
     color: var(--amber);
-    border-color: rgba(244,163,64,0.2);
+    border-color: rgba(180,83,9,0.18);
   }
 
   .tag.green {
-    background: rgba(62,207,142,0.1);
+    background: var(--green-bg);
     color: var(--green);
-    border-color: rgba(62,207,142,0.2);
+    border-color: rgba(22,163,74,0.18);
   }
 
-  /* special: publication card */
+  .tag.purple {
+    background: var(--purple-bg);
+    color: var(--purple);
+    border-color: rgba(124,58,237,0.18);
+  }
+
+  .tag.pink {
+    background: var(--pink-bg);
+    color: var(--pink);
+    border-color: rgba(190,24,93,0.18);
+  }
+
+  /* publication card */
   .card.publication {
-    border-color: rgba(126,184,247,0.25);
-    background: linear-gradient(135deg, #111827 0%, #0f1a2e 100%);
+    border-color: rgba(180,83,9,0.18);
+    background: #fffdf7;
   }
 
   .pub-link {
@@ -298,24 +285,25 @@
     gap: 5px;
     margin-top: 1rem;
     padding: 5px 12px;
-    border: 1px solid rgba(78,142,247,0.25);
+    border: 1px solid rgba(37,99,235,0.2);
     border-radius: 8px;
     transition: background 0.2s, border-color 0.2s;
   }
 
   .pub-link:hover {
-    background: rgba(78,142,247,0.1);
-    border-color: rgba(78,142,247,0.4);
+    background: var(--tag-bg);
+    border-color: rgba(37,99,235,0.4);
   }
 
-  /* divider */
-  hr {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 0;
-  }
+  /* accent left borders */
+  .card[data-type="nlp"]   { border-left: 3px solid #2563eb; }
+  .card[data-type="geo"]   { border-left: 3px solid #16a34a; }
+  .card[data-type="neuro"] { border-left: 3px solid #7c3aed; }
+  .card[data-type="pub"]   { border-left: 3px solid #b45309; }
+  .card[data-type="nlp2"]  { border-left: 3px solid #be185d; }
 
-  /* footer */
+  hr { border: none; border-top: 1px solid var(--border); margin: 0; }
+
   footer {
     padding: 2.5rem 0 4rem;
     color: var(--muted);
@@ -325,19 +313,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: gap;
+    flex-wrap: wrap;
+    gap: 0.5rem;
   }
-
-  /* card accent line color per type */
-  .card[data-type="nlp"]    { border-left: 3px solid #4e8ef7; }
-  .card[data-type="geo"]    { border-left: 3px solid #3ecf8e; }
-  .card[data-type="neuro"]  { border-left: 3px solid #c084fc; }
-  .card[data-type="pub"]    { border-left: 3px solid var(--amber); }
-  .card[data-type="nlp2"]   { border-left: 3px solid #f472b6; }
 
   @media (max-width: 600px) {
     h1 { font-size: 2.2rem; }
-    .card { padding: 1.4rem 1.4rem; }
+    .card { padding: 1.4rem; }
     .card-header { flex-direction: column-reverse; }
   }
 </style>
@@ -361,7 +343,7 @@
         <span class="dot"></span> jeremiasbordon33@gmail.com
       </a>
       <a href="#">
-        <span class="dot"></span> Olmué, Chile
+        <span class="dot"></span> Olmué, Valparaíso, Chile
       </a>
     </div>
   </header>
@@ -380,16 +362,14 @@
             <div class="card-number">01 — NLP / Finanzas</div>
             <h2 class="card-title">Análisis de sentimiento para predicción de precios en criptomonedas</h2>
           </div>
-          <div class="card-meta">
-            <span class="accuracy-badge">≥ 91% acc.</span>
-          </div>
+          <span class="accuracy-badge">≥ 91% acc.</span>
         </div>
         <p class="card-desc">
-          Modelo de clasificación de sentimiento aplicado a datos extraídos de <strong>Twitter/X</strong> sobre Bitcoin y Ethereum. 
-          Se procesó el corpus de tweets usando tokenización, eliminación de stopwords y vectorización TF-IDF, 
-          entrenando modelos de <strong>regresión logística, SVM y LSTM</strong> para correlacionar el sentimiento 
-          colectivo con variaciones de precio en ventanas de 24 y 72 horas. 
-          Los resultados evidencian que el sentimiento en redes sociales tiene poder predictivo estadísticamente significativo 
+          Modelo de clasificación de sentimiento aplicado a datos extraídos de <strong>Twitter/X</strong> sobre Bitcoin y Ethereum.
+          El corpus de tweets fue procesado mediante tokenización, eliminación de stopwords y vectorización TF-IDF,
+          entrenando modelos de <strong>regresión logística, SVM y LSTM</strong> para correlacionar el sentimiento
+          colectivo con variaciones de precio en ventanas de 24 y 72 horas.
+          Los resultados evidencian que el sentimiento en redes sociales tiene poder predictivo estadísticamente significativo
           sobre la volatilidad de corto plazo.
         </p>
         <div class="tags">
@@ -407,18 +387,16 @@
       <div class="card" data-type="geo">
         <div class="card-header">
           <div>
-            <div class="card-number">02 — Geoestadística / Seminario</div>
+            <div class="card-number">02 — Estadística Espacial / Seminario</div>
             <h2 class="card-title">Análisis geoespacial de concentración de cromo en el Swiss Jura</h2>
           </div>
-          <div class="card-meta">
-            <span class="accuracy-badge">≥ 90% acc.</span>
-          </div>
+          <span class="accuracy-badge">≥ 90% acc.</span>
         </div>
         <p class="card-desc">
-          Seminario de Geoestadística. Análisis espacial sobre el conjunto de datos clásico de <strong>Swiss Jura</strong> 
-          para estimar la distribución de concentraciones de cromo (Cr) en suelos. 
-          Se aplicaron técnicas de <strong>interpolación espacial</strong> (IDW, splines) y métodos de <strong>kriging ordinario y universal</strong>, 
-          evaluando la variografía experimental para modelar la dependencia espacial. 
+          Seminario de Geoestadística. Análisis espacial sobre el conjunto de datos clásico de <strong>Swiss Jura</strong>
+          para estimar la distribución de concentraciones de cromo (Cr) en suelos.
+          Se aplicaron técnicas de <strong>interpolación espacial</strong> (IDW, splines) y métodos de <strong>kriging ordinario y universal</strong>,
+          evaluando la variografía experimental para modelar la dependencia espacial.
           Los mapas resultantes permiten identificar zonas de contaminación potencial con cuantificación de la incertidumbre mediante varianzas de kriging.
         </p>
         <div class="tags">
@@ -428,7 +406,7 @@
           <span class="tag">Kriging</span>
           <span class="tag">Variografía</span>
           <span class="tag amber">Interpolación</span>
-          <span class="tag green">Swiss Jura</span>
+          <span class="tag green">Estadística Espacial</span>
         </div>
       </div>
 
@@ -439,15 +417,13 @@
             <div class="card-number">03 — NLP / Texto jurídico</div>
             <h2 class="card-title">Análisis de la Constitución chilena vigente con NLP y modelos de tópicos</h2>
           </div>
-          <div class="card-meta">
-            <span class="accuracy-badge">≥ 90% acc.</span>
-          </div>
+          <span class="accuracy-badge">≥ 90% acc.</span>
         </div>
         <p class="card-desc">
-          Procesamiento del texto completo de la <strong>Constitución Política de Chile</strong> 
-          mediante técnicas de Procesamiento de Lenguaje Natural. Se implementaron modelos de <strong>LDA (Latent Dirichlet Allocation)</strong> 
-          para extracción de tópicos latentes, complementados con embeddings de palabras para análisis semántico. 
-          Se identificaron los ejes temáticos dominantes del texto constitucional, su distribución por capítulos 
+          Procesamiento del texto completo de la <strong>Constitución Política de Chile</strong>
+          mediante técnicas de Procesamiento de Lenguaje Natural. Se implementaron modelos de <strong>LDA (Latent Dirichlet Allocation)</strong>
+          para extracción de tópicos latentes, complementados con embeddings de palabras para análisis semántico.
+          Se identificaron los ejes temáticos dominantes del texto constitucional, su distribución por capítulos
           y relaciones semánticas entre conceptos jurídicos clave como derechos fundamentales, institucionalidad y garantías.
         </p>
         <div class="tags">
@@ -456,7 +432,7 @@
           <span class="tag">LDA</span>
           <span class="tag">Gensim</span>
           <span class="tag">Word2Vec</span>
-          <span class="tag amber">NLP jurídico</span>
+          <span class="tag pink">NLP jurídico</span>
           <span class="tag green">Modelado de tópicos</span>
         </div>
       </div>
@@ -468,48 +444,46 @@
             <div class="card-number">04 — Investigación / Econometría</div>
             <h2 class="card-title">Volatility forecasting using deep recurrent neural networks as GARCH models</h2>
           </div>
-          <div class="card-meta">
-            <span class="accuracy-badge" style="background:rgba(244,163,64,0.1);color:var(--amber);border-color:rgba(244,163,64,0.3);">Publicado</span>
-          </div>
+          <span class="accuracy-badge" style="background:var(--amber-bg);color:var(--amber);border-color:rgba(180,83,9,0.25);">Publicado</span>
         </div>
         <p class="card-desc">
-          Participé como <strong>oyente e integrante del equipo</strong> en esta investigación dirigida por el 
-          Prof. <strong>G. Di-Giorgi</strong> (curso de Econometría), coautor del trabajo publicado. 
-          El estudio propone modelos de <strong>redes neuronales recurrentes profundas (LSTM, GRU)</strong> como 
-          alternativa a los modelos GARCH clásicos para el pronóstico de volatilidad en series financieras, 
-          demostrando ventajas en captura de dependencias de largo plazo y regímenes de alta volatilidad. 
-          La experiencia me permitió familiarizarme con metodologías de investigación reproducible y escritura científica.
+          Investigación publicada dirigida por el Prof. <strong>G. Di-Giorgi</strong> (Econometría, Universidad de Valparaíso),
+          en la que participé como <strong>asistente de investigación externo</strong>, apoyando en la revisión bibliográfica
+          y discusión de resultados sin figurar como coautor.
+          El trabajo propone modelos híbridos que combinan <strong>redes neuronales recurrentes (LSTM y BiLSTM)</strong>
+          con la estructura de los modelos <strong>GARCH</strong> para el pronóstico de volatilidad en series financieras,
+          logrando capturar dependencias de largo plazo y regímenes de alta volatilidad que los modelos clásicos no detectan.
+          La experiencia me introdujo a metodologías de investigación reproducible, escritura científica y trabajo con datos financieros de alta frecuencia.
         </p>
         <div class="tags">
           <span class="tag">LSTM</span>
-          <span class="tag">GRU</span>
+          <span class="tag">BiLSTM</span>
           <span class="tag">GARCH</span>
           <span class="tag">Series de tiempo</span>
           <span class="tag amber">Volatilidad</span>
           <span class="tag green">Deep Learning</span>
+          <span class="tag purple">Econometría</span>
         </div>
         <a class="pub-link" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=XyO8fsgAAAAJ&sortby=pubdate&citation_for_view=XyO8fsgAAAAJ:d1gkVwhDpl0C" target="_blank">
           ↗ ver publicación en Google Scholar
         </a>
       </div>
 
-      <!-- 5. Tesis neurociencias -->
+      <!-- 5. Tesis -->
       <div class="card" data-type="neuro">
         <div class="card-header">
           <div>
             <div class="card-number">05 — Tesis de grado</div>
             <h2 class="card-title">Modelo estadístico para tiempos entre potenciales de acción: esquema de fuga, integración y disparo</h2>
           </div>
-          <div class="card-meta">
-            <span class="accuracy-badge">≥ 92% acc.</span>
-          </div>
+          <span class="accuracy-badge">≥ 92% acc.</span>
         </div>
         <p class="card-desc">
-          Tesis de titulación en Ingeniería en Estadística, orientada a <strong>neurociencias computacionales</strong>. 
-          Se propone y valida un modelo estadístico para los <strong>tiempos entre disparos (interspike intervals)</strong> 
-          de una neurona bajo el esquema de <strong>fuga-integración-y-disparo (Leaky Integrate-and-Fire, LIF)</strong>. 
-          Se derivó la distribución de probabilidad de los ISI a partir de la dinámica estocástica del modelo LIF, 
-          ajustando los parámetros mediante <strong>máxima verosimilitud y métodos bayesianos</strong>. 
+          Tesis de titulación en Ingeniería en Estadística, orientada a <strong>neurociencias computacionales</strong>.
+          Se propone y valida un modelo estadístico para los <strong>tiempos entre disparos (interspike intervals, ISI)</strong>
+          de una neurona bajo el esquema de <strong>fuga-integración-y-disparo (Leaky Integrate-and-Fire, LIF)</strong>.
+          Se derivó la distribución de probabilidad de los ISI a partir de la dinámica estocástica del modelo LIF,
+          ajustando parámetros mediante <strong>máxima verosimilitud y métodos bayesianos</strong>.
           Los resultados muestran que el modelo reproduce fielmente los patrones de disparo observados experimentalmente.
         </p>
         <div class="tags">
@@ -518,7 +492,8 @@
           <span class="tag">Procesos estocásticos</span>
           <span class="tag">LIF model</span>
           <span class="tag amber">Neurociencias</span>
-          <span class="tag green">Bayes / MLE</span>
+          <span class="tag purple">Bayes / MLE</span>
+          <span class="tag green">92% acc.</span>
         </div>
       </div>
 
@@ -529,10 +504,9 @@
 
   <footer>
     <span>jeremías bordon · ingeniero estadístico · 2023</span>
-    <span style="color: rgba(78,142,247,0.5)">universidad de valparaíso</span>
+    <span style="color:#94a3b8">universidad de valparaíso</span>
   </footer>
 
 </div>
-
 </body>
 </html>
